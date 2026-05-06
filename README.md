@@ -2,7 +2,6 @@
 
 **Prerequisites:**  Node.js
 
-
 1. Install dependencies:
    `npm install`
 2. Run the app:
@@ -38,8 +37,3 @@ Frontend prototype (no backend or real data integration yet)
 ## Preview
 
 ![App Screenshot](./assets/screen.png)
-
-
-
-
-Frontend Airbnb-style booking app for Africa, with filters, favorites, and a simulated booking flow.
