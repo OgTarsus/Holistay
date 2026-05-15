@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './pages/HomePage';
 import DetailsPage from './pages/DetailsPage';
 import FavoritesPage from './pages/FavoritesPage';
@@ -17,6 +19,7 @@ export default function App() {
           <Route path="/listing/:id" element={<DetailsPage recentListings={recentListings} setRecentListings={setRecentListings}/>} />
         </Routes>
       </Router>
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </AppProvider>
   );
 }

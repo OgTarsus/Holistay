@@ -25,14 +25,14 @@ export default function Navbar() {
           Holistay
         </Link>
 
-        <div className="hidden md:flex items-center flex-1 max-w-md mx-8 bg-surface rounded-full border border-gray-200 px-4 py-2 card-shadow focus-within:border-primary/50 transition-all">
-          <Search className="w-4 h-4 text-gray-500 mr-3" />
+        <div className="flex items-center flex-1 max-w-md mx-3 sm:mx-8 bg-surface rounded-full border border-gray-200 px-3 sm:px-4 py-2 card-shadow focus-within:border-primary/50 transition-all min-w-0">
+          <Search className="w-4 h-4 text-gray-500 mr-2 sm:mr-3 flex-shrink-0" />
           <input 
             type="text" 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search by location or name..." 
-            className="bg-transparent border-none outline-none w-full text-sm placeholder-gray-400 font-medium"
+            placeholder="Search..." 
+            className="bg-transparent border-none outline-none w-full text-xs sm:text-sm placeholder-gray-400 font-medium min-w-0"
           />
         </div>
 

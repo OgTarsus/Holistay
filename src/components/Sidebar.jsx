@@ -1,11 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, Wifi, Waves, Wind, Car, Home, Building2, Tent, Warehouse, Check } from 'lucide-react';
-import { ALL_CITIES } from '../data';
+import { MapPin, Wifi, Waves, Wind, Car, Home, Building2, Tent, Warehouse, Check, Utensils, Dog, Tv, CircleHelp, X } from 'lucide-react';
+import { ALL_CITIES, ALL_AMENITIES, ALL_PROPERTY_TYPES } from '../data';
 import { useApp } from '../AppContext';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
 
-export default function Sidebar() {
+export const getAmenityIcon = (amenity) => {
+  switch (amenity) {
+    case 'WiFi': return <Wifi className="w-4 h-4" />;
+    case 'Pool': return <Waves className="w-4 h-4" />;
+    case 'AC': return <Wind className="w-4 h-4" />;
+    case 'Free Parking': return <Car className="w-4 h-4" />;
+    case 'Kitchen': return <Utensils className="w-4 h-4" />;
+    case 'Pet services': return <Dog className="w-4 h-4" />;
+    case 'Tv': return <Tv className="w-4 h-4" />;
+    default: return <CircleHelp className="w-4 h-4" />;
+  }
+};
+
+export const getPropertyTypeIcon = (type) => {
+  switch (type) {
+    case 'House': return <Home className="w-4 h-4" />;
+    case 'Apartment': return <Building2 className="w-4 h-4" />;
+    case 'Cabin': return <Tent className="w-4 h-4" />;
+    case 'Unique Stay': return <Warehouse className="w-4 h-4" />;
+    default: return <Home className="w-4 h-4" />;
+  }
+};
+
+export default function Sidebar({ isOpen, onClose }) {
   const { appliedFilters, applyFilters } = useApp();
   const [showLocationDropdown, setShowLocationDropdown] = useState(false);
   
@@ -35,14 +58,30 @@ export default function Sidebar() {
 
   const handleApply = () => {
     applyFilters(localFilters);
+    if (onClose) onClose();
   };
 
   return (
-    <aside className="hidden lg:block w-80 fixed left-0 top-20 h-[calc(100vh-80px)] bg-white border-r border-gray-100 p-6 overflow-y-auto custom-scrollbar">
-      <div className="mb-8">
-        <h2 className="text-2xl font-black tracking-tight mb-1">Filters</h2>
-        <p className="text-sm text-gray-500 font-medium">Narrow your search</p>
-      </div>
+    <>
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/40 z-30 lg:hidden top-20 backdrop-blur-sm" 
+          onClick={onClose}
+        />
+      )}
+      <aside className={cn(
+        "w-80 fixed left-0 top-20 h-[calc(100vh-80px)] bg-white border-r border-gray-100 p-6 overflow-y-auto custom-scrollbar z-40 transition-transform duration-300 lg:translate-x-0 ease-in-out",
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      )}>
+        <div className="mb-8 flex justify-between items-center">
+          <div>
+            <h2 className="text-2xl font-black tracking-tight mb-1">Filters</h2>
+            <p className="text-sm text-gray-500 font-medium">Narrow your search</p>
+          </div>
+          <button onClick={onClose} className="lg:hidden p-2 bg-gray-50 hover:bg-gray-100 rounded-full transition-colors active:scale-95">
+            <X className="w-5 h-5 text-gray-500" />
+          </button>
+        </div>
 
       <div className="space-y-8 pb-10">
         <section>
@@ -137,71 +176,42 @@ export default function Sidebar() {
         <section>
           <h3 className="font-bold mb-4 text-gray-900">Amenities</h3>
           <div className="space-y-4">
-             <FilterOption 
-               label="WiFi" 
-               icon={<Wifi className="w-4 h-4" />} 
-               checked={localFilters.amenities.includes('WiFi')}
-               onChange={() => toggleList('amenities', 'WiFi')}
-             />
-             <FilterOption 
-               label="Pool" 
-               icon={<Waves className="w-4 h-4" />} 
-               checked={localFilters.amenities.includes('Pool')}
-               onChange={() => toggleList('amenities', 'Pool')}
-             />
-             <FilterOption 
-               label="AC" 
-               icon={<Wind className="w-4 h-4" />} 
-               checked={localFilters.amenities.includes('AC')}
-               onChange={() => toggleList('amenities', 'AC')}
-             />
-             <FilterOption 
-               label="Free Parking" 
-               icon={<Car className="w-4 h-4" />} 
-               checked={localFilters.amenities.includes('Free Parking')}
-               onChange={() => toggleList('amenities', 'Free Parking')}
-             />
+            {ALL_AMENITIES.map(amenity => (
+              <FilterOption 
+                key={amenity}
+                label={amenity} 
+                icon={getAmenityIcon(amenity)} 
+                checked={localFilters.amenities.includes(amenity)}
+                onChange={() => toggleList('amenities', amenity)}
+              />
+            ))}
           </div>
         </section>
 
         <section>
-          <h3 className="font-bold mb-4 text-gray-900">Property Type</h3>
+          <h3 className="font-bold mb-4 text-gray-900 uppercase text-xs tracking-widest opacity-50">Property Type</h3>
           <div className="space-y-4">
-             <FilterOption 
-               label="House" 
-               icon={<Home className="w-4 h-4" />} 
-               checked={localFilters.propertyTypes.includes('House')}
-               onChange={() => toggleList('propertyTypes', 'House')}
-             />
-             <FilterOption 
-               label="Apartment" 
-               icon={<Building2 className="w-4 h-4" />} 
-               checked={localFilters.propertyTypes.includes('Apartment')}
-               onChange={() => toggleList('propertyTypes', 'Apartment')}
-             />
-             <FilterOption 
-               label="Cabin" 
-               icon={<Tent className="w-4 h-4" />} 
-               checked={localFilters.propertyTypes.includes('Cabin')}
-               onChange={() => toggleList('propertyTypes', 'Cabin')}
-             />
-             <FilterOption 
-               label="Unique Stay" 
-               icon={<Warehouse className="w-4 h-4" />} 
-               checked={localFilters.propertyTypes.includes('Unique Stay')}
-               onChange={() => toggleList('propertyTypes', 'Unique Stay')}
-             />
+            {ALL_PROPERTY_TYPES.map(type => (
+              <FilterOption 
+                key={type}
+                label={type} 
+                icon={getPropertyTypeIcon(type)} 
+                checked={localFilters.propertyTypes.includes(type)}
+                onChange={() => toggleList('propertyTypes', type)}
+              />
+            ))}
           </div>
         </section>
 
         <button 
           onClick={handleApply}
-          className="w-full bg-primary text-white py-4 rounded-2xl font-black hover:bg-primary/95 transition-all shadow-xl shadow-primary/20 active:scale-[0.98]"
+          className="w-full bg-primary text-white py-4 rounded-2xl font-black hover:bg-primary/95 transition-all shadow-xl shadow-primary/20 active:scale-[0.98] mt-8"
         >
           Apply Filters
         </button>
       </div>
     </aside>
+    </>
   );
 }
 

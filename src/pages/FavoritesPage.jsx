@@ -14,18 +14,18 @@ export default function FavoritesPage() {
 
   return (
     <Layout>
-      <main className="max-w-7xl mx-auto px-6 py-16">
-        <header className="mb-16">
-          <div className="flex items-center gap-6 mb-4">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
+        <header className="mb-10 sm:mb-16">
+          <div className="flex items-center gap-4 sm:gap-6 mb-4">
             <Link 
               to="/" 
-              className="p-3 rounded-2xl bg-white border border-gray-100 hover:shadow-lg transition-all active:scale-90"
+              className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-white border border-gray-100 hover:shadow-lg transition-all active:scale-90"
             >
-              <ArrowLeft className="w-6 h-6 text-gray-900" />
+              <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 text-gray-900" />
             </Link>
-            <h1 className="text-5xl font-black tracking-tighter leading-none">Your Stays</h1>
+            <h1 className="text-3xl sm:text-5xl font-black tracking-tighter leading-none">Your Stays</h1>
           </div>
-          <p className="text-xl text-gray-400 font-bold ml-[72px]">A curated collection of the properties you love most.</p>
+          <p className="text-base sm:text-xl text-gray-400 font-bold sm:ml-[72px]">A curated collection of the properties you love most.</p>
         </header>
 
         {favoriteListings.length > 0 ? (

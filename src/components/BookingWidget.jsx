@@ -2,11 +2,17 @@ import React, { useState } from 'react';
 import { Star, ChevronDown, Check } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
+import { toast } from 'react-toastify';
 
 export default function BookingWidget({ listing }) {
   const [showGuests, setShowGuests] = useState(false);
   const [guests, setGuests] = useState(2);
+  
   const today = new Date().toISOString().split('T')[0];
+
+  const handleBookNow = () => {
+    toast.success('Booking Successful!');
+  };
 
   return (
     <div className="sticky top-[120px] bg-white rounded-3xl border border-gray-100 shadow-[0px_16px_32px_rgba(0,0,0,0.1)] p-7">
@@ -87,7 +93,7 @@ export default function BookingWidget({ listing }) {
         </div>
       </div>
 
-      <button className="w-full bg-primary text-white py-4.5 rounded-2xl font-black text-lg hover:bg-primary/95 transition-all shadow-xl shadow-primary/20 active:scale-[0.98] mb-5">
+      <button onClick={handleBookNow} className="w-full bg-primary text-white py-4.5 rounded-2xl font-black text-lg hover:bg-primary/95 transition-all shadow-xl shadow-primary/20 active:scale-[0.98] mb-5">
         Book Now
       </button>
       

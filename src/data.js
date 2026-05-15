@@ -24,12 +24,14 @@ export const MOCK_LISTINGS = [
     rating: 4.98,
     reviewsCount: 156,
     images: [
-      'https://images.unsplash.com/photo-1549144464-07d092288338?auto=format&fit=crop&q=80&w=1200',
-      'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=1200',
-      'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=1200'
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1600607687931-ceeb66d11262?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=1200'
     ],
     type: 'House',
-    amenities: ['Pool', 'WiFi', 'Kitchen', 'Free Parking', 'AC'],
+    amenities: ['Pool', 'WiFi', 'Kitchen', 'Free Parking', 'AC', 'Tv'],
     host: {
       name: 'Amine',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200',
@@ -50,9 +52,11 @@ export const MOCK_LISTINGS = [
     rating: 4.95,
     reviewsCount: 92,
     images: [
-      'https://images.unsplash.com/photo-1628745277860-b1bb342884c6?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200',
       'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200',
-      'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&q=80&w=1200'
+      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1200'
     ],
     type: 'House',
     amenities: ['Pool', 'WiFi', 'Kitchen', 'Free Parking', 'AC'],
@@ -76,12 +80,14 @@ export const MOCK_LISTINGS = [
     rating: 5.0,
     reviewsCount: 48,
     images: [
-      'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=80&w=1200',
-      'https://images.unsplash.com/photo-1493246507139-91e8bef99c02?auto=format&fit=crop&q=80&w=1200',
-      'https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&q=80&w=1200'
+      'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1496080174650-637e3f22fa03?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1444201983204-c43cbd584d93?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=1200'
     ],
     type: 'Cabin',
-    amenities: ['Pool', 'WiFi', 'Kitchen'],
+    amenities: ['Pool', 'WiFi', 'Kitchen', 'Pet services'],
     host: {
       name: 'Kojo',
       avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=200',
@@ -102,8 +108,11 @@ export const MOCK_LISTINGS = [
     rating: 4.89,
     reviewsCount: 215,
     images: [
-      'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&q=80&w=1200',
-      'https://images.unsplash.com/photo-1560411130-bbcd8f4477dc?auto=format&fit=crop&q=80&w=1200'
+      'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=1200'
     ],
     type: 'Apartment',
     amenities: ['WiFi', 'Kitchen', 'AC'],
@@ -127,11 +136,14 @@ export const MOCK_LISTINGS = [
     rating: 4.82,
     reviewsCount: 134,
     images: [
-      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=1200',
-      'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&q=80&w=1200'
+      'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1600607687931-ceeb66d11262?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=1200'
     ],
     type: 'House',
-    amenities: ['Pool', 'WiFi', 'Kitchen', 'Free Parking', 'AC'],
+    amenities: ['Pool', 'WiFi', 'Kitchen', 'Free Parking', 'AC', 'Pet services'],
     host: {
       name: 'Adwoa',
       avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200',
@@ -144,3 +156,7 @@ export const MOCK_LISTINGS = [
     tags: ['Luxury', 'Tropical'],
   }
 ];
+
+export const ALL_PROPERTY_TYPES = Array.from(new Set(MOCK_LISTINGS.map(l => l.type)));
+export const ALL_AMENITIES = Array.from(new Set(MOCK_LISTINGS.flatMap(l => l.amenities)));
+

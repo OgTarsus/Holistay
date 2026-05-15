@@ -1,4 +1,4 @@
-import React, { useMemo} from 'react';
+import React, { useMemo, useState } from 'react';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import { MOCK_LISTINGS } from '../data';
@@ -9,6 +9,7 @@ import DestinationGrid from '../components/DestinationGrid';
 
 export default function HomePage({recentListings}) {
   const { favorites, toggleFavorite, appliedFilters, searchQuery } = useApp();
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   const filteredListings = useMemo(() => {
     return MOCK_LISTINGS.filter(listing => {
@@ -37,10 +38,13 @@ export default function HomePage({recentListings}) {
   return (
     <Layout>
       <div className="flex max-w-[1440px] mx-auto">
-        <Sidebar />
+        <Sidebar isOpen={isMobileSidebarOpen} onClose={() => setIsMobileSidebarOpen(false)} />
         
-        <main className="flex-1 lg:ml-80 p-6 lg:p-10">
-          <HomeHero resultCount={filteredListings.length} />
+        <main className="flex-1 lg:ml-80 p-4 sm:p-6 lg:p-10 w-full min-w-0">
+          <HomeHero 
+            resultCount={filteredListings.length} 
+            onOpenFilters={() => setIsMobileSidebarOpen(true)} 
+          />
 
           <RecentlyViewed listings={recentListings} />
 

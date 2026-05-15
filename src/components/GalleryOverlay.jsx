@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, ChevronLeft, X } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 export default function GalleryOverlay({ showGallery, setShowGallery, images, activeImageIndex, setActiveImageIndex }) {
@@ -14,35 +14,31 @@ export default function GalleryOverlay({ showGallery, setShowGallery, images, ac
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center pt-20 pb-10"
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center sm:pt-20 sm:pb-10"
         >
           <button 
             onClick={() => setShowGallery(false)}
-            className="absolute top-8 right-8 text-white hover:text-primary transition-colors p-2 bg-white/10 rounded-full"
+            className="absolute top-4 right-4 sm:top-8 sm:right-8 text-white hover:text-primary transition-colors p-2 bg-white/10 rounded-full z-10"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="rotate-45">
-              <path d="M12 19V5M5 12h14"/>
-            </svg>
+            <X className="w-6 h-6 sm:w-8 sm:h-8" />
           </button>
 
-          <div className="flex items-center justify-center w-full max-w-5xl px-10 gap-10 group">
+          <div className="flex items-center justify-center w-full max-w-5xl px-0 sm:px-10 gap-0 sm:gap-10 group relative h-full sm:h-auto">
             <button 
               onClick={prevImage}
-              className="text-white hover:text-primary transition-all p-4 bg-white/5 rounded-2xl border border-white/10"
+              className="absolute left-2 sm:static text-white hover:text-primary transition-all p-3 sm:p-4 bg-black/50 sm:bg-white/5 rounded-full sm:rounded-2xl border border-white/10 z-10"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>
-              </svg>
+              <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8 font-black" />
             </button>
             
             <motion.div 
               key={activeImageIndex}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="relative aspect-[16/10] flex-1 rounded-3xl overflow-hidden shadow-2xl"
+              className="relative aspect-auto h-full sm:h-auto sm:aspect-[16/10] flex-1 rounded-none sm:rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center bg-black"
             >
-              <img src={images[activeImageIndex]} className="w-full h-full object-cover" alt="Gallery" />
-              <div className="absolute top-4 left-0 right-0 px-10 flex gap-2">
+              <img src={images[activeImageIndex]} className="w-full h-auto sm:h-full object-contain sm:object-cover" alt="Gallery" />
+              <div className="absolute top-4 sm:top-4 left-0 right-0 px-4 sm:px-10 flex gap-2">
                  {images.map((_, idx) => (
                    <div 
                      key={idx} 
@@ -57,20 +53,20 @@ export default function GalleryOverlay({ showGallery, setShowGallery, images, ac
 
             <button 
               onClick={nextImage}
-              className="text-white hover:text-primary transition-all p-4 bg-white/5 rounded-2xl border border-white/10"
+              className="absolute right-2 sm:static text-white hover:text-primary transition-all p-3 sm:p-4 bg-black/50 sm:bg-white/5 rounded-full sm:rounded-2xl border border-white/10 z-10"
             >
-              <ChevronRight className="w-8 h-8 font-black" />
+              <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8 font-black" />
             </button>
           </div>
           
-          <div className="mt-10 flex gap-4 overflow-x-auto no-scrollbar max-w-3xl justify-center">
+          <div className="hidden sm:flex mt-10 gap-4 overflow-x-auto no-scrollbar max-w-3xl justify-center">
             {images.map((img, idx) => (
               <img 
                 key={idx}
                 src={img}
                 onClick={() => setActiveImageIndex(idx)}
                 className={cn(
-                  "w-20 h-20 rounded-xl cursor-pointer border-2 transition-all",
+                  "w-20 h-20 rounded-xl cursor-pointer border-2 transition-all object-cover",
                   idx === activeImageIndex ? "border-primary scale-110 shadow-lg shadow-primary/20" : "border-transparent opacity-50 hover:opacity-100"
                 )}
                 alt="Thumb"
